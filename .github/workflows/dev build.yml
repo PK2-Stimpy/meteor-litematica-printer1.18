@@ -16,12 +16,7 @@ jobs:
         run: |
           chmod +x ./gradlew
           ./gradlew build
-      - name: Create Dev Build release
-        uses: marvinpinto/action-automatic-releases@latest
+      - uses: actions/upload-artifact@v3
         with:
-          repo_token: '${{ secrets.GITHUB_TOKEN }}'
-          automatic_release_tag: latest
-          prerelease: false
-          title: Dev Build
-          files: |
-            ./build/libs/*.jar
+          name: Artifact
+          path: build/libs/
